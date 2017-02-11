@@ -17,7 +17,7 @@ public class User {
     private String login_provider;
     private String push_token;
     private String firebase_userid;
-    private String time_stamp;
+    private Object time_stamp;
 
     public User() {
     }
@@ -30,11 +30,11 @@ public class User {
         this.last_name = last_name;
     }
 
-    public String getTime_stamp() {
+    public Object getTime_stamp() {
         return time_stamp;
     }
 
-    public void setTime_stamp(String time_stamp) {
+    public void setTime_stamp(Object time_stamp) {
         this.time_stamp = time_stamp;
     }
 

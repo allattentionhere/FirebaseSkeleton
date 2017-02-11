@@ -2,6 +2,10 @@ package com.allattentionhere.show.push;
 
 import android.util.Log;
 
+import com.allattentionhere.show.MyApplication;
+import com.allattentionhere.show.util.Extras;
+import com.allattentionhere.show.util.SharedPrefsUtil;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -31,7 +35,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         sendRegistrationToServer(refreshedToken);
     }
     // [END refresh_token]
-
     /**
      * Persist token to third-party servers.
      *
@@ -43,6 +46,8 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
 
+        DatabaseReference dbRef = MyApplication.getFirebaseDatabase().getReference();
+        dbRef.child(Extras.FIREBASE_DATABASE_USERS).child(SharedPrefsUtil.getString(getApplicationContext(),Extras.PREFS_FIREBASE_USERID)).child("push_token").setValue(token);
 
     }
 }

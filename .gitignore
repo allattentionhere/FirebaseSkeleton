@@ -38,3 +38,4 @@ app/src/main/res/values/keys.xml
 app/app.iml
 app/.DS_Store
 .DS_Store
+FirebaseSkeleton.iml

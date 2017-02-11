@@ -38,6 +38,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
 
         if (!SharedPrefsUtil.getString(this, Extras.PREFS_FIREBASE_USERID).isEmpty()) {
             //logged in user
@@ -238,7 +240,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if (token != null) {
             mUser.setPush_token(token);
         }
-        mUser.setTime_stamp(ServerValue.TIMESTAMP+"");
+        mUser.setTime_stamp(ServerValue.TIMESTAMP);
         //set SharedPrefs
         SharedPrefsUtil.saveString(this, Extras.PREFS_LOGINPROVIDER_ID, mUser.getLoginprovider_id());
         SharedPrefsUtil.saveString(this, Extras.PREFS_EMAIL, mUser.getEmail());
